@@ -34,7 +34,7 @@
       </div>
 
       <div>
-        <video id="video" width="300" height="200" style="border: 1px solid gray"></video>
+        <video id="video" width="400" height="400" style="border: 1px solid gray"></video>
       </div>
 
       <div id="sourceSelectPanel" style="display:none">
@@ -70,7 +70,7 @@
   <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
   <script type="text/javascript">
     function decodeOnce(codeReader, selectedDeviceId) {
-      codeReader.VideoZoomFactor = '1.5f';
+      codeReader.VideoZoomFactor = '2.0f';
       codeReader.decodeFromInputVideoDevice(selectedDeviceId, 'video').then((result) => {
         console.log(result)
         document.getElementById('result').textContent = result.text
@@ -81,7 +81,7 @@
     }
 
     function decodeContinuously(codeReader, selectedDeviceId) {
-      codeReader.VideoZoomFactor = '1.5f';
+      codeReader.VideoZoomFactor = '2.0f';
       codeReader.decodeFromInputVideoDeviceContinuously(selectedDeviceId, 'video', (result, err) => {
         if (result) {
           // properly decoded qr code

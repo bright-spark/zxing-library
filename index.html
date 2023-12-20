@@ -143,9 +143,9 @@
             const decodingStyle = document.getElementById('decoding-style').value;
 
             if (decodingStyle == "once") {
-              decodeOnce(codeReader, selectedDeviceId);
+              decodeOnce(codeReader, 2);
             } else {
-              decodeContinuously(codeReader, selectedDeviceId);
+              decodeContinuously(codeReader, 2);
             }
 
             console.log(`Started decode from camera with id ${selectedDeviceId}`)

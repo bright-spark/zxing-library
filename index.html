@@ -18,13 +18,13 @@
   <main class="wrapper" style="padding-top:2em">
 
     <section class="container" id="demo-content">
-      <h1 class="title">Scan PDF-417 Barcode from Video Camera</h1>
+      <h1 class="title">Scan QR Code from Video Camera</h1>
 
       <p>
-        <a class="button-small button-outline" href="index.html">RESET</a>
+        <a class="button-small button-outline" href="../../index.html">HOME 🏡</a>
       </p>
 
-      <p>This example shows how to scan a barcode with ZXing javascript library from the device video camera. If more
+      <p>This example shows how to scan a QR code with ZXing javascript library from the device video camera. If more
         than one video input devices are available (for example front and back camera) the example shows how to read
         them and use a select to change the input device.</p>
 
@@ -34,7 +34,7 @@
       </div>
 
       <div>
-        <video id="video" width="600" height="300" style="border: 1px solid gray"></video>
+        <video id="video" width="300" height="200" style="border: 1px solid gray"></video>
       </div>
 
       <div id="sourceSelectPanel" style="display:none">
@@ -54,7 +54,7 @@
       <label>Result:</label>
       <pre><code id="result"></code></pre>
 
-      <p>See the <a href="https://github.com/zxing-js/library/tree/master/docs/examples/">source code</a> for
+      <p>See the <a href="https://github.com/zxing-js/library/tree/master/docs/examples/qr-camera/">source code</a> for
         this example.</p>
     </section>
 
@@ -70,6 +70,7 @@
   <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest"></script>
   <script type="text/javascript">
     function decodeOnce(codeReader, selectedDeviceId) {
+      codeReader.VideoZoomFactor = '1.5f';
       codeReader.decodeFromInputVideoDevice(selectedDeviceId, 'video').then((result) => {
         console.log(result)
         document.getElementById('result').textContent = result.text
@@ -80,10 +81,11 @@
     }
 
     function decodeContinuously(codeReader, selectedDeviceId) {
+      codeReader.VideoZoomFactor = '1.5f';
       codeReader.decodeFromInputVideoDeviceContinuously(selectedDeviceId, 'video', (result, err) => {
         if (result) {
           // properly decoded qr code
-          console.log('Found barcode!', result)
+          console.log('Found QR code!', result)
           document.getElementById('result').textContent = result.text
         }
 
@@ -143,9 +145,9 @@
             const decodingStyle = document.getElementById('decoding-style').value;
 
             if (decodingStyle == "once") {
-              decodeOnce(codeReader, 2);
+              decodeOnce(codeReader, selectedDeviceId);
             } else {
-              decodeContinuously(codeReader, 2);
+              decodeContinuously(codeReader, selectedDeviceId);
             }
 
             console.log(`Started decode from camera with id ${selectedDeviceId}`)
